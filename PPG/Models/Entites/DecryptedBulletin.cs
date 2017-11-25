@@ -7,7 +7,6 @@ namespace PPG.Models.Entites
 {
     public class DecryptedBulletin
     {
-        public int ElectionId { get; set; }
-        public int CandidateId { get; set; }
+        public List<DecryptedVote> votes { get; set; }
     }
 }

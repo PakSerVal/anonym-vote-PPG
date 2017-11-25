@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PPG.Models.Entites;
 using PPG.Models;
+using PPG.Data;
 
 
 namespace PPG.Controllers
@@ -9,9 +10,12 @@ namespace PPG.Controllers
     [Route("api/ppg")]
     public class ApiController : Controller
     {
+        private ElectContext electContext;
         private Config config;
-        public ApiController(Config config)
+
+        public ApiController(ElectContext electContext, Config config)
         {
+            this.electContext = electContext;
             this.config = config;
         }
 
@@ -20,9 +24,9 @@ namespace PPG.Controllers
         {
             if (bulletins.Length != 0)
             {
-                Bulletins bulletinsModel = new Bulletins(config);
+                Bulletins bulletinsModel = new Bulletins(electContext, config);
                 DecryptedBulletin[] decryptedBulletins = bulletinsModel.decryptBulletins(bulletins);
-                //bulletins.countBulletins(decryptedBulletins);
+                bulletinsModel.countBulletins(decryptedBulletins);
                 return Ok();
             }
             return BadRequest();
