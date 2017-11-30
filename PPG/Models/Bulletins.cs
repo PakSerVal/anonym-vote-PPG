@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Org.BouncyCastle.Math;
-using PPG.Models.Entites;
+using PPG.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,7 +48,7 @@ namespace PPG.Models
             return decryptedBulletins;
         }
 
-        public void countBulletins(DecryptedBulletin[] decryptedBulletins)
+        public void saveBulletins(DecryptedBulletin[] decryptedBulletins)
         {
             foreach(DecryptedBulletin decryptedBulletin in decryptedBulletins)
             {

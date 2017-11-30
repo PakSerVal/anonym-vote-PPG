@@ -1,0 +1,27 @@
+﻿@model Dictionary<string, List<CandidateCount>>
+@{
+    Layout = null;
+}
+<!doctype html>
+<html>
+<head>
+    <title>RsvpForm</title>
+</head>
+<body>
+    @foreach(KeyValuePair<string, List<CandidateCount>> entry in Model)
+    {
+        <table border="1">
+            <thead>@entry.Key</thead>
+            <tr><th>Candidate FIO</th><th>Vote count</th></tr>
+            @foreach(CandidateCount candidate in entry.Value)
+            {
+                <tr>
+                    <td>@candidate.CandidateFIO</td>
+                    <td>@candidate.Count</td>
+                </tr>
+            }
+        </table>
+        <br /><br />
+    }
+</body>
+</html>

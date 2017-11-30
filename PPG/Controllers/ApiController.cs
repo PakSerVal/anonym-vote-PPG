@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using PPG.Models.Entites;
+using PPG.Models.Entities;
 using PPG.Models;
 using PPG.Data;
 
@@ -26,7 +26,7 @@ namespace PPG.Controllers
             {
                 Bulletins bulletinsModel = new Bulletins(electContext, config);
                 DecryptedBulletin[] decryptedBulletins = bulletinsModel.decryptBulletins(bulletins);
-                bulletinsModel.countBulletins(decryptedBulletins);
+                bulletinsModel.saveBulletins(decryptedBulletins);
                 return Ok();
             }
             return BadRequest();
